@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,6 @@ Route::get('/', function () {
         'version' => '1.0.0',
     ];
 });
-
 
 Route::group(['namespace' => 'Auth'], function () {
 
@@ -57,4 +57,4 @@ Route::group(['middleware' => ['jwt', 'jwt.auth']], function () {
 });
 
 
-    
+

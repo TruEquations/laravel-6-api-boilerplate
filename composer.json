@@ -1,5 +1,5 @@
 {
-    "name": "kennethtomagan/laravel-6-api-boilerplate",
+    "name": "laravel-6-api-boilerplate",
     "type": "project",
     "description": "A Laravel 6 API Boilerplate to create a ready-to-use REST API. User Authentication using JWT.",
     "keywords": [
@@ -15,7 +15,7 @@
         "fruitcake/laravel-cors": "^1.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
-        "tymon/jwt-auth": "1.0.0-rc.5"
+        "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

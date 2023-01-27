@@ -9,12 +9,13 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Hashing\BcryptHasher;
 use App\Http\Resources\User as UserResource;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
 {
     /**
      * Login
-     * 
+     *
      * @param LoginRequest $request
      * @return \Illuminate\Http\JsonResponse
      * @throws \Illuminate\Validation\ValidationException
@@ -48,11 +49,11 @@ class AuthController extends Controller
 
             }
         } catch (JWTException $e) {
-            // Return Error message if cannot create token. 
+            // Return Error message if cannot create token.
             return response()->json(['error' => 'could_not_create_token'], 500);
 
         }
-        
+
         // transform user data
         $data = new UserResource($user);
 
